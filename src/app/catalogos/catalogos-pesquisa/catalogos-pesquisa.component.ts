@@ -23,7 +23,11 @@ export class CatalogosPesquisaComponent implements OnInit {
   filtro = new DiscoFiltro();
   discos = [];
 
-  generos = GeneroEnum;
+  generos = [
+    { label: 'Rock', value: 'ROCK' },
+    { label: 'Pop', value: 'POP' },
+    { label: 'Classic', value: 'CLASSIC' },
+    { label: 'MPB', value: 'MPB' }];
 
   formulario: FormGroup;
 
@@ -55,7 +59,15 @@ export class CatalogosPesquisaComponent implements OnInit {
     );
 
   }
+  pesquisarNome(event) {
+    this.filtro.nome = event;
+    this.pesquisar();
+  }
 
+  pesquisarGenero(event) {
+    this.filtro.genero = event;
+    this.pesquisar();
+  }
 
   pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;

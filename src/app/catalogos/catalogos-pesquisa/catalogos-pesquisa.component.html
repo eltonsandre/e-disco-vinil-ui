@@ -1,15 +1,17 @@
-<p-dataView #dv [value]="discos" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="brand">
+<p-dataView #dv [value]="discos" paginatorPosition="both" filterBy="nome" [paginator]="true"
+  [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" 
+  (onLazyLoad)="aoMudarPagina($event)">
   <p-header>
-    <div class="ui-helper-clearfix">
+    <div class=" ui-helper-clearfix">
       <div class="ui-g">
         <div class="ui-g-12 ui-md-4">
-          <!-- <p-dropdown [options]="generos" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="pesquisar($event)"
-            [style]="{'min-width':'140px'}"></p-dropdown> -->
+          <p-dropdown [options]="generos" [(ngModel)]="filtro.genero" placeholder="Genero"
+            (onChange)="pesquisarGenero($event)" [style]="{'min-width':'140px'}"></p-dropdown>
         </div>
         <div class="ui-g-6 ui-md-4 filter-container">
           <div style="position:relative">
-            <input type="search" pInputText placeholder="Search by brand" >
-            <!-- (keyup)="dv.filter($event.target.value)"> -->
+            <input type="search" pInputText placeholder="Pesquisar pelo nome do disco"
+              (keyup)="pesquisarNome($event.target.value)">
           </div>
         </div>
         <div class="ui-g-6 ui-md-4" style="text-align:right">
@@ -46,13 +48,20 @@
     <div style="padding:.5em" class="ui-g-12 ui-md-3">
 
       <p-panel [header]="disco.nome" [style]="{'text-align':'center'}">
-        <img src="assets/showcase/images/demo/disco/{{disco.brand}}.png" width="60">
+        <img [src]="disco.imagem" alt="disco de {{disco.genero}} - {{disco.nome}}" width="60" height="60">
         <div class="disco-detail">{{disco.genero}} - {{disco.artista}}</div>
         <hr class="ui-widget-content" style="border-top:0">
-        <button pButton type="button" icon="pi pi-search" (click)="selecionarDisco($event, disco)" style="margin-top:0"></button>
+        <button pButton type="button" icon="pi pi-search" (click)="selecionarDisco($event, disco)"
+          style="margin-top:0"></button>
       </p-panel>
 
     </div>
   </ng-template>
-
+  <ng-template pTemplate="paginatorleft" let-state>
+    {{state.first}}
+    <button type="button" pButton icon="fa-refresh"></button>
+  </ng-template>
+  <ng-template pTemplate="paginatorright">
+    <button type="button" pButton icon="fa-cloud-upload"></button>
+  </ng-template>
 </p-dataView>
