@@ -41,6 +41,19 @@ export class CatalogosPesquisaComponent implements OnInit {
   ngOnInit() {
     this.title.setTitle('Catalogo de disco');
     this.configurarFormulario();
+
+    this.catalogosService.pesquisar(
+      { nome: 'rocke', genero: GeneroEnum.ROCK, pagina: 0, itensPorPagina: 5 }
+    ).subscribe(
+      response => {
+        this.discos = response;
+        console.log(this.discos);
+      },
+      erro => {
+        console.error(erro);
+      }
+    );
+
   }
 
 
@@ -66,11 +79,11 @@ export class CatalogosPesquisaComponent implements OnInit {
 
   }
 
-  confirmarExclusao(lancamento: any) {
+  confirmarExclusao(disco: any) {
     this.confirmation.confirm({
-      message: 'Tem certeza que deseja excluir?',
+      message: 'Tem certeza que deseja remover do carrinho?',
       accept: () => {
-        this.excluir(lancamento);
+        // this.removerDoCarrinho(disco);
       }
     });
   }

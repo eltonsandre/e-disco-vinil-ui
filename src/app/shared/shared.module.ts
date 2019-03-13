@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FormDebugComponent } from './form-debug/form-debug.component';
 import { MessageModule } from './message.module';
+import { MessageComponent } from './message.component';
 
 
 @NgModule({
@@ -14,11 +15,11 @@ import { MessageModule } from './message.module';
   ],
   declarations: [
     FormDebugComponent,
-    MessageModule,
+    MessageComponent,
   ],
   exports: [
     FormDebugComponent,
-    MessageModule,
+    MessageComponent,
   ],
 })
 export class SharedModule { }

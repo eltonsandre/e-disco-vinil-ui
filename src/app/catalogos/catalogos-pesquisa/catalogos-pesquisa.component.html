@@ -3,12 +3,13 @@
     <div class="ui-helper-clearfix">
       <div class="ui-g">
         <div class="ui-g-12 ui-md-4">
-          <p-dropdown [options]="generos" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="pesquisar($event)"
-            [style]="{'min-width':'140px'}"></p-dropdown>
+          <!-- <p-dropdown [options]="generos" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="pesquisar($event)"
+            [style]="{'min-width':'140px'}"></p-dropdown> -->
         </div>
         <div class="ui-g-6 ui-md-4 filter-container">
           <div style="position:relative">
-            <input type="search" pInputText placeholder="Search by brand" (keyup)="dv.filter($event.target.value)">
+            <input type="search" pInputText placeholder="Search by brand" >
+            <!-- (keyup)="dv.filter($event.target.value)"> -->
           </div>
         </div>
         <div class="ui-g-6 ui-md-4" style="text-align:right">
@@ -18,24 +19,21 @@
     </div>
   </p-header>
 
-  <ng-template let-car pTemplate="listItem">
+  <ng-template let-disco pTemplate="listItem">
     <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
       <div class="ui-g-12 ui-md-3" style="text-align:center">
-        <img src="assets/showcase/images/demo/car/{{disco.brand}}.png">
+        <img [src]="disco.imagem">
       </div>
       <div class="ui-g-12 ui-md-8 disco-details">
         <div class="ui-g">
           <div class="ui-g-2 ui-sm-6">Vin: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{disco.vin}}</b></div>
+          <div class="ui-g-10 ui-sm-6"><b>{{disco.nome}}</b></div>
 
           <div class="ui-g-2 ui-sm-6">Year: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{disco.year}}</b></div>
+          <div class="ui-g-10 ui-sm-6"><b>{{disco.genero}}</b></div>
 
           <div class="ui-g-2 ui-sm-6">Brand: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{disco.brand}}</b></div>
-
-          <div class="ui-g-2 ui-sm-6">Color: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{disco.color}}</b></div>
+          <div class="ui-g-10 ui-sm-6"><b>{{disco.artista}}</b></div>
         </div>
       </div>
       <div class="ui-g-12 ui-md-1 search-icon">
