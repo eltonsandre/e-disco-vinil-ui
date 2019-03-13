@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FormDebugComponent } from './form-debug/form-debug.component';
-import { MessageModule } from './message.module';
 import { MessageComponent } from './message.component';
 
 
