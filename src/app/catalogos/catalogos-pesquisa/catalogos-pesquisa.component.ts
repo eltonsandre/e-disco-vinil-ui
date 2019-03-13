@@ -43,10 +43,10 @@ export class CatalogosPesquisaComponent implements OnInit {
     this.configurarFormulario();
 
     this.catalogosService.pesquisar(
-      { nome: 'rocke', genero: GeneroEnum.ROCK, pagina: 0, itensPorPagina: 5 }
+      { nome: 'rock', genero: GeneroEnum.ROCK, pagina: 0, itensPorPagina: 5 }
     ).subscribe(
       response => {
-        this.discos = response;
+        this.discos = response.discos;
         console.log(this.discos);
       },
       erro => {

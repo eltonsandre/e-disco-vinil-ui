@@ -20,11 +20,6 @@ export class CatalogosService {
 
   constructor(private http: HttpClient) { }
 
-  /**
-   * @param {DiscoFiltro} filtro
-   * @returns {Observable<any>}
-   * @memberof CatalogosService
-   */
   pesquisar(filtro: DiscoFiltro): Observable<any> {
     let params = new HttpParams({
       fromObject: {
@@ -37,7 +32,7 @@ export class CatalogosService {
       params = params.append('nome', filtro.nome);
     }
     if (filtro.genero) {
-      params = params.append('genero', filtro.genero.toString());
+      params = params.append('genero', 'rock'); // filtro.genero.toString());
     }
 
     return this.http.get<any>('http://localhost:8080/catalogo?', { params })

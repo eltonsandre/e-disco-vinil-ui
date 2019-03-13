@@ -9,7 +9,7 @@ export class Disco {
 }
 
 export enum GeneroEnum {
-    POP, ROCK, MPB, CLASSIC
+    POP = 'pop', ROCK = 'rock', MPB = 'mpb', CLASSIC = 'classic'
 }
 
 export class Venda {
